@@ -1,0 +1,56 @@
+.calendar li {
+  background: #ddd;
+  border-radius: 4px;
+  margin: 2px;
+  padding: 0px 5px;
+  text-align: center;
+  box-sizing: border-box;
+  transition: transform 0.08s;
+  position: relative;
+  overflow-y: hidden;
+}
+
+.citas-date {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 5px;
+  column-gap: 5px;
+  position: absolute;
+}
+
+.calendar li::-webkit-scrollbar {
+  display: none;
+}
+
+.calendar li:hover {
+  overflow-y: scroll;
+}
+
+.calendar li h5 {
+  padding: 2px;
+  margin: 0;
+  position: sticky;
+  background: #ddd;
+  z-index: 10000;
+  top: 0;
+  margin-bottom: 4px;
+}
+
+.calendar li:hover,
+.calendar li a:hover {
+  outline: 1px solid var(--secondary-color);
+  transform: scale(1.04);
+  z-index: 1000;
+}
+
+.calendar li a {
+  text-decoration: none;
+  padding: 4px;
+  border-radius: 6px;
+  background: var(--primary-color);
+  font-size: 0.6rem;
+  transition: transform 0.08s;
+  margin: 0;
+  color: #fff;
+}

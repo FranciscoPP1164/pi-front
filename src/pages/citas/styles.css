@@ -1,0 +1,21 @@
+.cita {
+  box-shadow: 0 0 4px 2px #ccc;
+  border-radius: 0 0 4px 4px;
+  padding: 15px;
+  width: 70%;
+  height: 80%;
+}
+
+.cita-fecha {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.label {
+  margin: 10px;
+  padding: 15px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+
+  border-radius: 10px;
+}
