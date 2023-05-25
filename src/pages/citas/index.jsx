@@ -1,33 +1,33 @@
 import "./styles.css";
-import Input from "../../components/input";
+import {Link} from "wouter";
 import {useEffect, useState} from "react";
-import {getApointmentById} from "../../services/apointmets";
+import {getApointments} from "../../services/apointmets";
 
-function Cita({params}) {
-  const [apointment, setApointment] = useState({
-    cod_cita: "",
-    fecha: "",
-    hora: "",
-    razon_cita: "",
-    dias: 0,
-    enfermero: {},
-    cliente: {},
-    paciente: {},
-  });
+function Citas() {
+  const [apointments, setApointments] = useState([]);
 
   useEffect(() => {
-    const {apointment} = params;
-    getApointmentById(apointment).then((apointment) => setApointment(apointment));
-  });
+    getApointments().then((apointments) => setApointments([...apointments]));
+  }, []);
 
   return (
-    <div className="cita">
-      <div className="cita-fecha">
-        <Input label="fecha" text={`${apointment.fecha.slice(0, -14)}`} width="40%" />
-        <Input label="hora" text={`${apointment.hora.slice(0, -3)}`} width="40%" />
-      </div>
+    <div className="citas">
+      <Link href="/cita/create">
+        <button>+</button>
+      </Link>
+      {apointments.length >= 1 ? (
+        apointments.map((apointment) => (
+          <Link key={apointment.cod_cita} href={`/citas/${apointment.cod_cita}`} className="cita">
+            <p>{apointment.cod_cita}</p>
+            <p>{apointment.fecha.slice(0, -14)}</p>
+            <p>{apointment.hora.slice(0, -3)}</p>
+          </Link>
+        ))
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
 
-export default Cita;
+export default Citas;

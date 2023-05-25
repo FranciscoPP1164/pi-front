@@ -2,6 +2,7 @@ import {useState, useEffect} from "react";
 import Day from "../days";
 import initCalendar from "../../utilities/initCalendar";
 import {getApointments} from "../../services/apointmets";
+import {Link} from "wouter";
 import "./styles.css";
 
 function Calendar() {
@@ -12,9 +13,12 @@ function Calendar() {
       const newDays = [...days];
 
       apointments.forEach(({fecha, hora, cod_cita}) => {
-        const apointmentDay = fecha.slice(8, -14);
+        const apointmentDay = Number.parseInt(fecha.slice(8, -14));
+        const apointmentMonth = Number.parseInt(fecha.slice(5, -17));
         const index = days.findIndex(({day}) => day == apointmentDay);
-        newDays[index].apointments.push([hora.slice(0, -3), cod_cita]);
+        if (new Date().getMonth() + 1 == apointmentMonth) {
+          newDays[index].apointments.push([hora.slice(0, -3), cod_cita]);
+        }
       });
 
       setDays(newDays);
@@ -25,7 +29,9 @@ function Calendar() {
     <div className="calendar">
       <div className="header-calendar">
         <h1>Cronograma Enfercuidarte</h1>
-        <button>+</button>
+        <Link href="/cita/create">
+          <button>+</button>
+        </Link>
       </div>
       <table className="days-calendar">
         <tbody>
