@@ -67,7 +67,9 @@ function CreateCita() {
           >
             <option value=""></option>
             {clients.map((client) => (
-              <option key={client.cod_cliente}>{client.primer_nombre}</option>
+              <option key={client.cod_cliente}>
+                {client.primer_nombre} {client.segundo_nombre ?? ""} {client.primer_apellido} {client.segundo_apellido}
+              </option>
             ))}
           </select>
         </div>
@@ -83,7 +85,9 @@ function CreateCita() {
           >
             <option value=""></option>
             {patients.map((patient) => (
-              <option key={patient.cod_paciente}>{patient.primer_nombre}</option>
+              <option key={patient.cod_paciente}>
+                {patient.primer_nombre} {patient.segundo_nombre ?? ""} {patient.primer_apellido} {patient.segundo_apellido}
+              </option>
             ))}
           </select>
         </div>
@@ -99,7 +103,9 @@ function CreateCita() {
           >
             <option value=""></option>
             {nurses.map((nurse) => (
-              <option key={nurse.cod_enfermero}>{nurse.primer_nombre}</option>
+              <option key={nurse.cod_enfermero}>
+                {nurse.primer_nombre} {nurse.segundo_nombre ?? ""} {nurse.primer_apellido} {nurse.segundo_apellido}
+              </option>
             ))}
           </select>
         </div>
